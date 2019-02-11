@@ -1,0 +1,18 @@
+.item-add-form {
+    display: flex;
+    justify-content: space-around;
+}
+
+.add-type {
+    width: 55px;
+    border: 1px solid #e7e7e7;
+    height: 44px;
+
+    font-size: 18px;
+    color: black;
+    background-color: #fff;
+
+    margin-right: 10px;
+    font-weight: 300;
+    transition: border 0.3s;
+}

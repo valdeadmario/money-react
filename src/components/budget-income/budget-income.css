@@ -1,0 +1,15 @@
+.budget-item {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    margin: 0 auto;
+    padding: .5rem 1rem;
+}
+
+.budget-title {
+    margin-top: .2rem;
+}
+
+.budget-value {
+    font-size: 1.4rem;
+}
