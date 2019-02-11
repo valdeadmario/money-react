@@ -7,19 +7,20 @@ export default class InputForm extends Component {
     return (
       <form className="item-add-form">
 
-        <select className="add-type">
-          <option value="inc" selected>+</option>
-          <option value="exp">-</option>
+        <select multiple="" className="form-control add-type" >
+          <option value='inc'>+</option>
+          <option value='exp'>-</option>
         </select>
 
         <input type="text"
-               className="form-control"
+               className="form-control add-description"
                placeholder='Description'/>
-
-        <input type="number"
-               className="add-value"
-               placeholder="Value"/>
-
+        <div className='d-flex'>
+          <div className="input-group-prepend">
+            <span className="input-group-text">$</span>
+          </div>
+          <input type="number" className="form-control add-number" aria-label="Amount (to the nearest dollar)"/>
+        </div>
         <button
           className="btn btn-outline-secondary">
           Add

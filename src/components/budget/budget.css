@@ -1,0 +1,15 @@
+.budget {
+    margin-top: 3rem;
+    padding: 1rem;
+    box-shadow: -4px 10px 15px -10px #000000;
+}
+.total-budget {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.total-title {
+    font-size: 2.5rem;
+}
+.total-value {
+    font-size: 3rem;
+}

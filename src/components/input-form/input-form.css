@@ -1,18 +1,28 @@
 .item-add-form {
     display: flex;
     justify-content: space-around;
+    width: 700px;
+
+    margin: 0 auto;
+    margin-top: 2rem;
+    padding: 2rem;
+
+    font-size: 30px;
+
+    box-shadow: -20px 20px 0 -17px #e3e3e3,
+    20px -20px 0 -17px #e3e3e3,
+    20px 20px 0 -20px #592385,
+    0 0 0 2px #592385;
 }
 
 .add-type {
-    width: 55px;
-    border: 1px solid #e7e7e7;
-    height: 44px;
+    width: 70px;
+}
 
-    font-size: 18px;
-    color: black;
-    background-color: #fff;
+.add-number {
+    width: 100px;
+}
 
-    margin-right: 10px;
-    font-weight: 300;
-    transition: border 0.3s;
+.add-description {
+    width: 300px;
 }
