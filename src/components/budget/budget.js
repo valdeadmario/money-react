@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 
 import './budget.css';
-import BudgetIncome from '../budget-income';
-import BudgetExpense from '../budget-expense';
+import BudgetType from '../budget-type';
+import { withNumbers } from "../hoc-helpers";
+import withPercentage from "../hoc-helpers/with-percentage";
 
-export default class Budget extends Component {
 
+class Budget extends Component {
   render() {
+    const {value,
+          income,
+          expense,
+          percentage} = this.props;
+
     return (
       <div className="budget bg-info">
         <div className='total-budget '>
@@ -16,13 +22,35 @@ export default class Budget extends Component {
               February 2019
             </span>:
           </h2>
-          <span className="total-value text-dark">+ 2,345.64</span>
+          <span className="total-value text-dark">{value < 0 ? '-' : '+'} {value}</span>
         </div>
 
-        <BudgetIncome/>
+        <BudgetType title='Income'
+                    clazz='bg-success'
+                    value={income}>
+          { (income) => {
+            return <span className="budget-value text-dark">+ {income}</span>;
+          }
+          }
+        </BudgetType>
 
-        <BudgetExpense/>
+        <BudgetType title='Expense'
+                    clazz='expense-budget bg-danger'
+                    percentage={percentage}
+                    value={expense}>
+          { (expense, percentage) => {
+            return (
+              <span className='d-flex'>
+                <span className="budget-value text-dark">- {expense}</span>
+                <span className="expense-percentage">{percentage !== -1 ? percentage + ' %' : '...'}</span>
+              </span>
+            );
+          }
+          }
+        </BudgetType>
       </div>
     );
-  }
-}
+  };
+};
+
+export default withNumbers()(withPercentage()(Budget));

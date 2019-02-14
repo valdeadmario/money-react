@@ -1,10 +1,17 @@
-.income-list {
+.list {
     min-width: 35%;
     padding: 1rem;
 
     border-top: 2px solid #52C437;
 }
-.income-list .list-group-item {
+.list .list-group-item {
     padding: .25rem .75rem;
     border-color: rgba(82, 196, 55, 0.66);
+}
+
+.list .expense {
+    border-color: rgba(179, 8, 1, 0.58);
+}
+.expenseList {
+    border-top: 2px solid #b30801;
 }
