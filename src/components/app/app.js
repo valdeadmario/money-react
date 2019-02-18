@@ -6,6 +6,7 @@ import InputForm from '../input-form';
 import AppHeader from "../app-header/app-header";
 import Budget from "../budget/budget";
 import ItemList from "../items-list";
+import ErrorBoundary from "../error-boundary/error-boundary";
 
 export default class App extends Component {
 
@@ -83,27 +84,29 @@ export default class App extends Component {
     const {inc, exp} = this.state;
 
     return (
-      <div className="todo-app">
-        <AppHeader />
-        <Budget
-          value={total}
-          income={incTotal}
-          expense={expTotal}
-          percentage/>
+      <ErrorBoundary>
+        <div className="todo-app">
+          <AppHeader />
+          <Budget
+            value={total}
+            income={incTotal}
+            expense={expTotal}
+            percentage/>
 
-        <InputForm onItemAdded={this.addItem}/>
-        <div className='all-lists'>
-          <ItemList
-            data={inc}
-            onDeleted={this.deleteItem}
-            type='inc'/>
+          <InputForm onItemAdded={this.addItem}/>
+          <div className='all-lists'>
+            <ItemList
+              data={inc}
+              onDeleted={this.deleteItem}
+              type='inc'/>
 
-          <ItemList
-            data={exp}
-            onDeleted={this.deleteItem}
-            type='exp'/>
+            <ItemList
+              data={exp}
+              onDeleted={this.deleteItem}
+              type='exp'/>
+          </div>
         </div>
-      </div>
+      </ErrorBoundary>
     );
   };
 };
