@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 import './app.css'
 
 import InputForm from '../input-form';
-import AppHeader from "../app-header/app-header";
+import AppHeader from "../app-header";
 import Budget from "../budget/budget";
 import ItemList from "../items-list";
-import ErrorBoundary from "../error-boundary/error-boundary";
+import ErrorBoundary from "../error-boundary";
 
 export default class App extends Component {
 
@@ -14,16 +14,15 @@ export default class App extends Component {
 
   state = {
     inc: [
-      this.createItems('Coffee', 400),
-      this.createItems('Stipuxa', 1346),
-      this.createItems('Coffee', 400),
-      this.createItems('Stipuxa', 1346)
+      this.createItems('Salary', 400),
+      this.createItems('Sold car', 1346),
+      this.createItems('Gift', 100),
     ],
     exp: [
-      this.createItems('fee', 400),
-      this.createItems('Stapauxa', 100),
-      this.createItems('Codsfee', 400),
-      this.createItems('Stads', 346)
+      this.createItems('Drink coffee', 50),
+      this.createItems('Buy IPad', 300),
+      this.createItems('New shoe', 100),
+      this.createItems('Update WebStorm', 120)
     ]
 
   };
