@@ -19,3 +19,6 @@ Also you can watch percentage of your expense
 percentage = (income / expense) * 100%
 ```
 Good luck:)
+
+Mishura Vladimir - vladimir.vstup@gmail.com
+Pavliuk Oleksii - alexispavliuk@gmail.com

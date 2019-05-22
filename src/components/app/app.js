@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import './app.css'
 
@@ -8,24 +9,24 @@ import Budget from "../budget/budget";
 import ItemList from "../items-list";
 import ErrorBoundary from "../error-boundary";
 
+
 export default class App extends Component {
 
   maxID = 0;
 
   state = {
-    inc: [
-      this.createItems('Salary', 400),
-      this.createItems('Sold car', 1346),
-      this.createItems('Gift', 100),
-    ],
-    exp: [
-      this.createItems('Drink coffee', 50),
-      this.createItems('Buy IPad', 300),
-      this.createItems('New shoe', 100),
-      this.createItems('Update WebStorm', 120)
-    ]
+            "inc":[],
+            "exp": []
+  }
 
-  };
+  componentDidMount() {
+    axios.get('https://api.github.com/repos/valdeadmario/db/contents/db.json')
+        .then(resp => {
+          this.setState({...JSON.parse(atob(resp.data.content)).budget})
+        })
+  }
+
+
 
   deleteItem = (id, type) => {
     this.setState((state) => {
@@ -41,7 +42,13 @@ export default class App extends Component {
       }
     })
   }
-
+   /**
+     * Добавляем елемент в масив
+     * @param {string} type 'exp' or 'inc'
+     * @param {string} label any string
+     * @param {number} value any number
+     * @returns {Array} that array with plus one object.
+     */  
   addItem = (type, label, value) => {
     if (label && value) {
       const item = this.createItems(label, value);
@@ -56,7 +63,12 @@ export default class App extends Component {
       })
     }
   }
-
+  /**
+     * Создаем новый обьект
+     * @param {string} label any string
+     * @param {number} value any number
+     * @returns {object} new object with id, label and value params.
+     */  
   createItems( label, value) {
     return {
       label,
@@ -64,7 +76,11 @@ export default class App extends Component {
       id: this.maxID++
     }
   }
-
+  /**
+     * Считаем бюджет
+     * @param {string} type 'exp' or 'inc'
+     * @returns {object} sum of array[type].
+     */ 
   getTotal(type) {
     let total = 0;
     this.state[type].forEach((item) => {
@@ -74,12 +90,11 @@ export default class App extends Component {
   }
 
   render(){
-    console.log(this.state)
+    console.log(this.state);
     const incTotal = this.getTotal('inc');
     const expTotal = this.getTotal('exp');
 
     const total =  incTotal - expTotal;
-
     const {inc, exp} = this.state;
 
     return (
@@ -87,9 +102,10 @@ export default class App extends Component {
         <div className="todo-app">
           <AppHeader />
           <Budget
-            value={total}
+
             income={incTotal}
             expense={expTotal}
+            value={total}
             percentage/>
 
           <InputForm onItemAdded={this.addItem}/>

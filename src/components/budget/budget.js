@@ -8,18 +8,18 @@ import withPercentage from "../hoc-helpers/with-percentage";
 
 class Budget extends Component {
   render() {
-    const {value,
+    const {
           income,
           expense,
+          value,
           percentage} = this.props;
-
     return (
       <div className="budget bg-info">
         <div className='total-budget '>
           <h2 className="total-title text-white">
             Available Budget in
             <span className="budget__title--month">
-              February 2019
+              {' May 2019'}
             </span>:
           </h2>
           <span className="total-value text-dark">{value < 0 ? '-' : '+'} {value}</span>
